@@ -54,6 +54,12 @@
                         <span>category</span>
                     </a>
                 </li>
+				<li class="{{ Request::is('admin/post*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.post.index') }}">
+                        <i class="material-icons">label</i>
+                        <span>Posts</span>
+                    </a>
+                </li>
                
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
