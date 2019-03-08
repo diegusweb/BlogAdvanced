@@ -30,7 +30,7 @@ Route::post('subscriber','SubscriberController@store')->name('subscriber.store')
 
 Route::group(['middleware'=>['auth']], function (){
    Route::post('favorite/{post}/add','FavoriteController@add')->name('post.favorite');
-   //Route::post('comment/{post}','CommentController@store')->name('comment.store');
+   Route::post('comment/{post}','CommentController@store')->name('comment.store');
 });
 
 
@@ -48,6 +48,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 	Route::get('/pending/post','PostController@pending')->name('post.pending');
     Route::put('/post/{id}/approve','PostController@approval')->name('post.approve');
 	
+	Route::get('comments','CommentController@index')->name('comment.index');
+    Route::delete('comments/{id}','CommentController@destroy')->name('comment.destroy');
+	
 	Route::get('/favorite','FavoriteController@index')->name('favorite.index');
 	
 	Route::get('/subscriber','SubscriberController@index')->name('subscriber.index');
@@ -62,6 +65,9 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
 	Route::get('settings','SettingsController@index')->name('settings');
     Route::put('profile-update','SettingsController@updateProfile')->name('profile.update');
     Route::put('password-update','SettingsController@updatePassword')->name('password.update');
+	
+	Route::get('comments','CommentController@index')->name('comment.index');
+    Route::delete('comments/{id}','CommentController@destroy')->name('comment.destroy');
 	
 	Route::get('/favorite','FavoriteController@index')->name('favorite.index');
 	
