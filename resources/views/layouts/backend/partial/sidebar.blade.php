@@ -11,7 +11,9 @@
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
 
-                    
+                    <li>
+                        <a href="{{ Auth::user()->role->id == 1 ? route('admin.settings') : route('author.settings')}}"><i class="material-icons">settings</i>Settings</a>
+                    </li>
 
                     <li role="seperator" class="divider"></li>
                     <li>
@@ -48,13 +50,13 @@
                         <span>Tag</span>
                     </a>
                 </li>
-				<li class="{{ Request::is('admin/category*') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/category*') ? 'active' : '' }}">
                     <a href="{{ route('admin.category.index') }}">
-                        <i class="material-icons">label</i>
-                        <span>category</span>
+                        <i class="material-icons">apps</i>
+                        <span>Category</span>
                     </a>
                 </li>
-				<li class="{{ Request::is('admin/post*') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/post*') ? 'active' : '' }}">
                     <a href="{{ route('admin.post.index') }}">
                         <i class="material-icons">library_books</i>
                         <span>Posts</span>
@@ -66,27 +68,30 @@
                         <span>Pending Posts</span>
                     </a>
                 </li>
-				<li class="{{ Request::is('admin/favorite') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/favorite') ? 'active' : '' }}">
                     <a href="{{ route('admin.favorite.index') }}">
                         <i class="material-icons">favorite</i>
                         <span>Favorite Posts</span>
                     </a>
                 </li>
-				
-				<li class="{{ Request::is('admin/subscriber') ? 'active' : '' }}">
-                    <a href="{{ route('admin.subscriber.index') }}">
-                        <i class="material-icons">subscriptions</i>
-                        <span>Subscribers</span>
-                    </a>
-				</li>
-				
-				<li class="{{ Request::is('admin/comments') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/comments') ? 'active' : '' }}">
                     <a href="{{ route('admin.comment.index') }}">
                         <i class="material-icons">comment</i>
                         <span>Comments</span>
                     </a>
                 </li>
-               
+                <li class="{{ Request::is('admin/authors') ? 'active' : '' }}">
+                    <a href="{{ route('admin.author.index') }}">
+                        <i class="material-icons">account_circle</i>
+                        <span>Authors</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('admin/subscriber') ? 'active' : '' }}">
+                    <a href="{{ route('admin.subscriber.index') }}">
+                        <i class="material-icons">subscriptions</i>
+                        <span>Subscribers</span>
+                    </a>
+                </li>
                 <li class="header">System</li>
 
                 <li class="{{ Request::is('admin/settings') ? 'active' : '' }}">
@@ -106,7 +111,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-</li>
+                </li>
             @endif
             @if(Request::is('author*'))
                 <li class="{{ Request::is('author/dashboard') ? 'active' : '' }}">
@@ -117,24 +122,25 @@
                 </li>
                 <li class="{{ Request::is('author/post*') ? 'active' : '' }}">
                     <a href="{{ route('author.post.index') }}">
-                        <i class="material-icons">label</i>
+                        <i class="material-icons">library_books</i>
                         <span>Posts</span>
                     </a>
                 </li>
-				 <li class="{{ Request::is('author/favorite') ? 'active' : '' }}">
+                <li class="{{ Request::is('author/favorite') ? 'active' : '' }}">
                     <a href="{{ route('author.favorite.index') }}">
                         <i class="material-icons">favorite</i>
                         <span>Favorite Posts</span>
                     </a>
                 </li>
-				<li class="{{ Request::is('author/comments') ? 'active' : '' }}">
+
+                <li class="{{ Request::is('author/comments') ? 'active' : '' }}">
                     <a href="{{ route('author.comment.index') }}">
                         <i class="material-icons">comment</i>
                         <span>Comments</span>
                     </a>
                 </li>
-				<li class="header">System</li>
 
+                <li class="header">System</li>
                 <li class="{{ Request::is('author/settings') ? 'active' : '' }}">
                     <a href="{{ route('author.settings') }}">
                         <i class="material-icons">settings</i>
