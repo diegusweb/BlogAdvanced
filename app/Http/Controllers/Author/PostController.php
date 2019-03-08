@@ -7,6 +7,7 @@ use App\Tag;
 use App\Post;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Notifications\NewAuthorPost;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
