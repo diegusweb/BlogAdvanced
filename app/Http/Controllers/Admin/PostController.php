@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Notifications\AuthorPostApproved;
+use App\Notifications\NewPostNotity;
+use App\Subscriber;
 
 class PostController extends Controller
 {
@@ -92,6 +94,12 @@ class PostController extends Controller
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);
 
+		$subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber)
+        {
+            Notification::route('mail',$subscriber->email)
+                ->notify(new NewPostNotity($post));
+        }
 
         Toastr::success('Post Successfully Saved :)','Success');
         return redirect()->route('admin.post.index');
@@ -217,6 +225,12 @@ class PostController extends Controller
             $post->save();
             $post->user->notify(new AuthorPostApproved($post));
 
+			$subscribers = Subscriber::all();
+            foreach ($subscribers as $subscriber)
+            {
+                Notification::route('mail',$subscriber->email)
+                    ->notify(new NewPostNotity($post));
+            }
 
             Toastr::success('Post Successfully Approved :)','Success');
         } else {
