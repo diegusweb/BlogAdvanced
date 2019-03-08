@@ -11,9 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('posts','PostController@index')->name('post.index');
+Route::get('post/{slug}','PostController@details')->name('post.details');
+
+Route::get('/category/{slug}','PostController@postByCategory')->name('category.posts');
+Route::get('/tag/{slug}','PostController@postByTag')->name('tag.posts');
+
+Route::get('profile/{username}','AuthorController@profile')->name('author.profile');
+
+Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
+
+Route::get('/search','SearchController@search')->name('search');
 
 Auth::routes();
 
