@@ -214,7 +214,7 @@ class PostController extends Controller
         {
             $post->is_approved = true;
             $post->save();
-            $post->user->notify(new AuthorPostApproved($post));
+            //$post->user->notify(new AuthorPostApproved($post));
 
 
             Toastr::success('Post Successfully Approved :)','Success');
