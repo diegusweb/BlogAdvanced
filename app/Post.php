@@ -29,4 +29,9 @@ class Post extends Model
     {
         return $query->where('status', 1);
     }
+	
+	public function favorite_to_users()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }
