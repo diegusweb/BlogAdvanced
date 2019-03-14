@@ -18,7 +18,7 @@ class PostController extends Controller
 	
     public function details($slug)
     {
-        $post = Post::where('slug',$slug)->approved()->published()->first();
+        $post = Post::where('slug',$slug)->first();
 
         $blogKey = 'blog_' . $post->id;
 

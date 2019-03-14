@@ -11,11 +11,11 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Post::class, 300)->create()->each(function(App\Post $post){
+        factory(App\Post::class, 50)->create()->each(function(App\Post $post){
             $post->categories()->attach([
                 rand(1, 5),
-                rand(6,14),
-                rand(15,20),
+                rand(1,9),
+                rand(4,9),
             ]);
 
             $post->tags()->attach([
