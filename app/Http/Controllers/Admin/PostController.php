@@ -48,15 +48,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
-        $this->validate($request,[
-            'title' => 'required',
-            'image' => 'required',
-            'categories' => 'required',
-            'tags' => 'required',
-            'body' => 'required',
-        ]);
         $image = $request->file('image');
         $slug = str_slug($request->title);
         if(isset($image))
@@ -136,15 +129,8 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostCreateRequest $request, Post $post)
     {
-        $this->validate($request,[
-            'title' => 'required',
-            'image' => 'image',
-            'categories' => 'required',
-            'tags' => 'required',
-            'body' => 'required',
-        ]);
 		
         $image = $request->file('image');
         $slug = str_slug($request->title);
