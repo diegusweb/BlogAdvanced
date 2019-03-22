@@ -19,13 +19,8 @@ class SettingsController extends Controller
         return view('admin.settings');
     }
 	
-	public function updateProfile(Request $request)
+	public function updateProfile(ProfileUpdateRequest $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required|email',
-            'image' => 'required|image',
-        ]);
         $image = $request->file('image');
         $slug = str_slug($request->name);
         $user = User::findOrFail(Auth::id());

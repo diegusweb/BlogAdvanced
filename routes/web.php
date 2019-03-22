@@ -39,7 +39,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::put('profile-update','SettingsController@updateProfile')->name('profile.update');
     Route::put('password-update','SettingsController@updatePassword')->name('password.update');
 	
-	Route::resource([
+	Route::resources([
 		'tag' => 'TagController',
 		'category' => 'CategoryController',
 		'post' => 'PostController',
