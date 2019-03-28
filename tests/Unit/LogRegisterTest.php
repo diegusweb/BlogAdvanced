@@ -6,7 +6,6 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\LogRegister;
-use Faker\Generator as Faker;
 
 class LogRegisterTest extends TestCase
 {
@@ -15,19 +14,30 @@ class LogRegisterTest extends TestCase
      *
      * @return void
      */
-    public function test_n_create_a_log()
+    public function test_check_model_log()
     {
-		/*aker = Faker\Factory::create();
+
+		//his->assertTrue(true);
 		
+		$logRegister = new LogRegister();
+		
+		$this->assertInstanceOf(LogRegister::class, $logRegister);
+	}	 
+	
+	public function test_can_create_a_log()
+    {
+	
         $data = [
-            'title' => $faker->word,
-            'ip' => $faker->ipv4,
-        ];*/
+            'title' => "demmmmmm",
+            'ip' => '124.1.1.12',
+        ];
 		
 		//his->assertTrue(true);
 		
 		$logRegister = new LogRegister();
 		
-		 $this->assertInstanceOf(LogRegister::class, $logRegister);
-	}	 
+		$this->post(route('log.store'), $data)
+        ->assertStatus(201)
+        ->assertJson($data);
+	}
 }

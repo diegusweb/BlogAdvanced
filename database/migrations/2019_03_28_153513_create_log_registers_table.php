@@ -14,7 +14,9 @@ class CreateLogRegistersTable extends Migration
     public function up()
     {
         Schema::create('log_registers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+			 $table->string('title');
+			  $table->string('ip');
             $table->timestamps();
         });
     }
